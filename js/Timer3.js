@@ -6,14 +6,12 @@ export default class Timer {
             minutes: root.querySelector(".timer__part--minutes"),
             seconds: root.querySelector(".timer__part--seconds"),
             control: root.querySelector(".timer__btn--control"),
-            reset: root.querySelector(".timer__btn--reset"),
-            switch_mode: root.querySelector(".switch__mode--mode")
+            reset: root.querySelector(".timer__btn--reset")
+
         };
 
         this.interval = null;
         this.remainingSeconds = 0;
-        this.mode = false;
-        this.switch = false;
 
         this.el.control.addEventListener("click", () => {
             if (this.interval === null) {
@@ -26,24 +24,8 @@ export default class Timer {
             const inputMinutes = prompt("Enter number of minutes:");
 
             if (inputMinutes < 60) {
-                this.remainingSeconds = inputMinutes * 60;
-                this.updateInterfaceTime();
-            }
-        });
-
-        this.el.switch_mode.addEventListener("click", () => {
-            const sure = prompt("Are you sure you want to switch modes? (y/n)");
-
-            if (sure === "y") {
                 this.stop();
-                if (this.mode === false) {
-                    this.mode = true;
-                    document.getElementById("curr-mode").textContent = "BREAK MODE";
-                } else {
-                    this.mode = false;
-                    document.getElementById("curr-mode").textContent = "STUDY MODE";
-                }
-                this.remainingSeconds = 0;
+                this.remainingSeconds = inputMinutes * 60;
                 this.updateInterfaceTime();
             }
         });
@@ -78,13 +60,6 @@ export default class Timer {
 
             if (this.remainingSeconds === 0) {
                 this.stop();
-                if (this.mode === false) {
-                    this.mode = true;
-                    document.getElementById("curr-mode").textContent = "BREAK MODE";
-                } else {
-                    this.mode = false;
-                    document.getElementById("curr-mode").textContent = "STUDY MODE";
-                }
             }
         }, 1000);
 
@@ -100,16 +75,20 @@ export default class Timer {
 
     static getHTML() {
         return `
-            <span class="timer__part timer__part--minutes">00</span>
-            <span class="timer__part">:</span>
-            <span class="timer__part timer__part--seconds">00</span>
-            <button type="button" class="timer__btn timer__btn--control timer__btn--start">
-                <span class="material-icons">play_arrow</span>
-            </button>
-            <button type="button" class="timer__btn timer__btn--reset">
-                <span class="material-icons">timer</span>
-            </button>
-            <button type="button" class="switch switch__mode--mode">Switch Modes</button>
+            <div class="container-1">
+                <div class="subcontainer-1">
+                    <span class="timer__part timer__part--minutes">00</span>
+                    <span class="timer__part">:</span>
+                    <span class="timer__part timer__part--seconds">00</span>
+                    <button type="button" class="timer__btn timer__btn--control timer__btn--start">
+                        <span class="material-icons">play_arrow</span>
+                    </button>
+                    <button type="button" class="timer__btn timer__btn--reset">
+                        <span class="material-icons">timer</span>
+                    </button>
+                </div>
+                <button> Switch Modes </button>
+            </div>    
         `;
     }
 }

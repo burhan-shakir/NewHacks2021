@@ -1,0 +1,12 @@
+h1{
+    text-align: center;
+}
+
+body{
+    text-align: center;
+}
+.input-box{
+    width: 500px;
+    height: 25px;
+    border-radius: 6px;
+}
