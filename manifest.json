@@ -10,13 +10,18 @@
 
     "permissions": ["activeTab", "declarativeContent", "storage", "tabs"],
 
+    "icons":{
+        "16": "imgs/kawaii-tomato.png"
+    },
+    
     "action": {
-        "default_popup": "html/popup.html"
+        "default_popup": "html/popup.html",
+        "default_icon": "imgs/kawaii-tomato.png"
     },
 
     "content_scripts": [{
         "matches": ["https://www.google.com/"],
-        "css": ["css/background.css"],
+        "css": ["css/main.css"],
         "js": ["js/main.js"]
     }]
 

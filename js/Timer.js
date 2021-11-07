@@ -82,8 +82,6 @@ export default class Timer {
                 if (this.mode === false) {
                     this.mode = true;
                     alert("ITS BREAK TIME!")
-                    chrome.tabs.create({
-                        url: "../html/breakWindow.html"})
                     document.getElementById("curr-mode").textContent = "BREAK MODE";
                 } else {
                     this.mode = false;
