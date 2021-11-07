@@ -70,8 +70,6 @@ export default class Timer {
     }
 
     start() {
-        chrome.runtime.sendMessage({action: "status"}, function(response){
-        });
         if (this.remainingSeconds === 0) return;
 
         this.interval = setInterval(() => {

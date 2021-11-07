@@ -12,9 +12,6 @@ const redirectPath = "127.0.0.1";
 // List of websities to be blocked
 let websites = ["www.facebook.com", "www.youtube.com", "www.instagram.com", "facebook.com"];
 
-// Set delay (Time interval after which our script should execute)
-let delay = 10000; // 10 seconds
-
 let study = false;
 // Define the blocker function
 let blocker = () => {
@@ -75,7 +72,7 @@ let blocker = () => {
                         break;
                     }
                 }
-
+                
                 if (flag == 1) {
                     if (line === '')
                         completeContent += line;
