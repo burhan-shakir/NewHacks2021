@@ -1,0 +1,21 @@
+body {
+    background-color: white;
+    width: 300px;
+}
+
+.header {
+    border-width: 10px;
+    border-style: solid;
+    border-radius: 2px;
+    border-color: black;
+    background-color: teal;
+}
+
+.blocked {
+    background-color: white;
+}
+
+select {
+    margin: auto;
+    background-color: orchid;
+}

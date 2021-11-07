@@ -1,21 +1,23 @@
 {
 
-"name": "Getting Started Example",
+    "name": "Pomodoro Technique",
 
-"description": "Build an Extension!",
+    "description": "Build an Extension!",
 
-"version": "1.0",
+    "version": "1.0",
 
-"manifest_version": 3,
+    "manifest_version": 3,
 
-"permissions": ["activeTab", "declarativeContent", "storage"],
+    "permissions": ["activeTab", "declarativeContent", "storage"],
 
-"content_scripts": [
-    {
-      "matches": ["https://www.google.com/"],
-      "css": ["background.css"],
-      "js": ["background.js"]
-    }
-  ]
+    "action": {
+        "default_popup": "html/popup.html"
+    },
+
+    "content_scripts": [{
+        "matches": ["https://www.google.com/"],
+        "css": ["/css/background.css"],
+        "js": ["/js/background.js"]
+    }]
 
 }
