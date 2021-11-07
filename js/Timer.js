@@ -9,7 +9,7 @@ export default class Timer {
             reset: root.querySelector(".timer__btn--reset"),
             switch_mode: root.querySelector(".switch__mode--mode")
         };
-
+        
         this.interval = null;
         this.remainingSeconds = 0;
         this.mode = false;
@@ -70,19 +70,26 @@ export default class Timer {
     }
 
     start() {
+        chrome.runtime.sendMessage({action: "status"}, function(response){
+        });
         if (this.remainingSeconds === 0) return;
 
         this.interval = setInterval(() => {
             this.remainingSeconds--;
             this.updateInterfaceTime();
+            console.log(this.remainingSeconds);
 
             if (this.remainingSeconds === 0) {
                 this.stop();
                 if (this.mode === false) {
                     this.mode = true;
+                    alert("ITS BREAK TIME!")
+                    chrome.tabs.create({
+                        url: "../html/breakWindow.html"})
                     document.getElementById("curr-mode").textContent = "BREAK MODE";
                 } else {
                     this.mode = false;
+                    alert("ITS STUDY TIME!")
                     document.getElementById("curr-mode").textContent = "STUDY MODE";
                 }
             }
